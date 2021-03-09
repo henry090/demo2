@@ -8,7 +8,7 @@ library(plyr)
 library(doParallel)
 library(data.table)
 
-result11 <- data.frame(matrix(NA, nrow = 8, ncol = 1)) 
+result11 <- data.frame(matrix(NA, nrow = 6, ncol = 1)) 
 
 # get pages
 colnames(result11) <- c("reference")
@@ -106,7 +106,7 @@ for (i in 1:length(bina_links)) {
     #date
     append(., grep('Tarix',baxis_tarix_elan,value = T) %>% 
              str_extract(.,'(\\d+).(\\d+).(\\d+)') %>% 
-             as.Date(format='%d.%m.%Y')) %>% 
+             as.Date(format='%d.%m.%Y') %>% as.character()) %>% 
     # yeni/kohne
     append(., html_page %>% 
              html_nodes(".box") %>%
